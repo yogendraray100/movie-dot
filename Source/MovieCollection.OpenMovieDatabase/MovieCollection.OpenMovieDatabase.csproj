@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net48</TargetFrameworks>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <LangVersion>8.0</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <NoWarn>SA1200;NU5105;CA1303;SA1309;SA1101;CS1591;SA1633;CA1055;CA2227</NoWarn>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisLevel>latest</AnalysisLevel>
+    </PropertyGroup>
+
+    <!--
+    # SA1200: Using directive should appear within a namespace declaration.
+    # NU5105: Simver 2.0 older client warning.
+    # SA1101: Prefix local calls with this.
+    # SA1309: Field names should not begin with underscore.
+    # CA1303: Do not pass literals as localized parameters.
+    # CS1591: Missing XML comment for publicly visible type or member.
+    # SA1633: The file header is missing or not located at the top of the file.
+    # CA1055: Change the return type of method from string to System.Uri.
+    # CA2227: Collection properties should be read only.
+    -->
+
+    <PropertyGroup>
+        <Authors>Peyman Mohammadi</Authors>
+        <Title>MovieCollection.OpenMovieDatabase</Title>
+        <Copyright>© 2022 Peyman Mohammadi</Copyright>
+        <PackageId>MovieCollection.OpenMovieDatabase</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>movie; series; api; wrapper; omdb</PackageTags>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>Unofficial implementation of Open Movie Database API</Description>
+        <RepositoryUrl>https://github.com/moviecollection/open-movie-database</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/moviecollection/open-movie-database</PackageProjectUrl>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+        <Reference Include="System.Net.Http" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.2.32">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>
